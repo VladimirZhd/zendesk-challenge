@@ -1,0 +1,5 @@
+// Get all tickets
+GET http://localhost:8080/tickets HTTP/1.1
+
+###
+GET http://localhost:8080/tickets/4 HTTP/1.1

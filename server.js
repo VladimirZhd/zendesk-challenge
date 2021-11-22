@@ -1,6 +1,7 @@
 import express from 'express';
 import http from 'http';
 import config from 'config';
+import router from './routes/routes.js'
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.set('port'.PORT);
+app.use(router);
 
 const server = http.createServer(app);
 
