@@ -16,7 +16,9 @@
             : "S"
         }}
       </p>
-      <a routerLink="/tickets/{{ ticket.id }}">{{ ticket.subject }}</a>
+      <a routerLink="/tickets/{{ ticket.id }}" routerLinkActive="lol">{{
+        ticket.subject
+      }}</a>
     </li>
   </ul>
   <button [disabled]="!prev" (click)="changePage('prev')">

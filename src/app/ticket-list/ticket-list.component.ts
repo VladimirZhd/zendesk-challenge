@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from '../ticket.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class TicketListComponent implements OnInit {
   data: any;
 
 
-  constructor(private ticketService: TicketService) { }
+  constructor(private ticketService: TicketService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.ticketService.getAllTickets().subscribe(async (data: any) => {
@@ -46,5 +47,9 @@ export class TicketListComponent implements OnInit {
         this.count -= this.tickets.length;
       }
     });
+  }
+
+  clickTicket(id: number) {
+    this.router.navigate([`tickets/${id}`], { relativeTo: this.route });
   }
 }
