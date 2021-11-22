@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"nodemon server.js\" \"ng serve\"",
+    "start": "nodemon server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,6 +19,9 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@fortawesome/angular-fontawesome": "^0.10.1",
+    "@fortawesome/fontawesome-svg-core": "~1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "config": "^3.3.6",
     "express": "^4.17.1",
     "node-fetch": "^3.1.0",

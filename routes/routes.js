@@ -12,7 +12,8 @@ const rootURL = process.env.rootURL || config.get('rootURL');
 // Get list of tickets
 router.get('/tickets', async (req, res) => {
     try {
-        const response = await fetch(`${rootURL}/api/v2/tickets?page=2&per_page=25`, {
+        const page = req.query.page ? req.query.page : 1;
+        const response = await fetch(`${rootURL}/api/v2/tickets?page=${page}&per_page=25`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -25,11 +26,25 @@ router.get('/tickets', async (req, res) => {
     }
 });
 
+
 // Get a single ticket
 router.get('/tickets/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const response = await fetch(`${rootURL}/api/v2/tickets/${id}`, { headers: { "Authorization": `Bearer ${token}` } });
+        const data = await response.json();
+        res.status(200).json(data);
+    } catch (error) {
+        res.json(error);
+        console.log(error);
+    }
+});
+
+// Get a user
+router.get('/users/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const response = await fetch(`${rootURL}/api/v2/users/${id}`, { headers: { "Authorization": `Bearer ${token}` } });
         const data = await response.json();
         res.status(200).json(data);
     } catch (error) {

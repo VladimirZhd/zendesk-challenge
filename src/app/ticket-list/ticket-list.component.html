@@ -1,0 +1,29 @@
+<div class="container">
+  <ul class="tiket-list">
+    <li *ngFor="let ticket of tickets">
+      <p
+        [ngClass]="{
+          open: ticket.status === 'open',
+          pending: ticket.status === 'pending',
+          solved: ticket.status === 'solved'
+        }"
+      >
+        {{
+          ticket.status === "open"
+            ? "O"
+            : ticket.status === "pending"
+            ? "P"
+            : "S"
+        }}
+      </p>
+      <a routerLink="/tickets/{{ ticket.id }}">{{ ticket.subject }}</a>
+    </li>
+  </ul>
+  <button [disabled]="!prev" (click)="changePage('prev')">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button [disabled]="!next" (click)="changePage('next')">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+  <p>Showing {{ count }} out of {{ total_count }}</p>
+</div>

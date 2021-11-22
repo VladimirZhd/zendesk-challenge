@@ -1,0 +1,36 @@
+li {
+  display: flex;
+  align-items: center;
+  border: black 1px solid;
+  max-width: 400px;
+  margin: auto;
+
+  p {
+    width: 1.2em;
+    margin-right: 1em;
+    margin-left: 1em;
+    text-align: center;
+    border-radius: 3px;
+    justify-self: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.open {
+  color: #ffffff;
+  background-color: #e34f32;
+}
+
+.pending {
+  color: #ffffff;
+  background-color: #3091ec;
+}
+
+.solved {
+  color: #ffffff;
+  background-color: #87929d;
+}
