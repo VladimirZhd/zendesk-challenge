@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TicketService {
   tickets: [] = [];
-  rootURL: String = `${window.location.protocol}//${window.location.hostname}:8080`;
+  rootURL: string = `${window.location.protocol}//${window.location.hostname}:8080`;
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +15,11 @@ export class TicketService {
     return this.http.get(`${this.rootURL}/tickets`);
   }
 
-  getPage(page: Number): Observable<any> {
+  getTicketInfo(id: any): Observable<any> {
+    return this.http.get(`${this.rootURL}/tickets/${id}`);
+  }
+
+  getPage(page: number): Observable<any> {
     return this.http.get(`${this.rootURL}/tickets?page=${page}`);
   }
 }

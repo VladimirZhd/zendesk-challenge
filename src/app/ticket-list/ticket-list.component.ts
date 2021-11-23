@@ -50,6 +50,7 @@ export class TicketListComponent implements OnInit {
   }
 
   clickTicket(id: number) {
+    console.log(id);
     this.router.navigate([`tickets/${id}`], { relativeTo: this.route });
   }
 }
