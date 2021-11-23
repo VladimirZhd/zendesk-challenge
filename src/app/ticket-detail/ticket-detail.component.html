@@ -1,3 +1,13 @@
 <div class="container">
-  <h1>{{ ticket.subject }}</h1>
+  <button (click)="clickBack()"><i class="fas fa-arrow-left"></i> Back</button>
+  <h1>Subject: {{ ticket.subject }}</h1>
+  <div class="description">
+    <p>Description:</p>
+    <p id="description">{{ ticket.description }}</p>
+  </div>
+  <div class="info">
+    <p>Created: {{ ticket.created_at | date }}</p>
+    <p>Last Updated: {{ ticket.updated_at | date }}</p>
+    <p>Requester: {{ user.name }}</p>
+  </div>
 </div>

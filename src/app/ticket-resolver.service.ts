@@ -5,15 +5,21 @@ import { catchError } from "rxjs/operators"
 import { TicketService } from './ticket.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class TicketResolverService implements Resolve<any> {
 
-  constructor(private ticketService: TicketService) { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> | Observable<any> | any {
-    const id = route.paramMap.get('id');
-    return this.ticketService.getTicketInfo(id).pipe(
-      catchError((err: string) => of(err))
-    )
-  }
+    constructor(private ticketService: TicketService) { }
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> | Observable<any> | any {
+        const id = route.paramMap.get('id');
+        if (id) {
+            return this.ticketService.getTicketInfo(id).pipe(
+                catchError((err: string) => of(err))
+            )
+        } else {
+            return this.ticketService.getAllTickets().pipe(
+                catchError((err: string) => of(err))
+            )
+        }
+    }
 }
