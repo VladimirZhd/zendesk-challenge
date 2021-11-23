@@ -28,12 +28,17 @@ export class TicketListComponent implements OnInit {
       this.count = this.tickets.length;
     });
   }
-
+  /**
+   * Get next or previous page for the tickets.
+   * @param direction : next or previous page;
+   */
   changePage(direction: string) {
     let page = 0;
     if (direction === 'next') {
+      // Get page number for next page
       page = this.data.next_page.split('=')[1].split('&')[0];
     } else {
+      // Get page number for previous page
       page = this.data.previous_page.split('=')[1].split('&')[0];
     };
     this.ticketService.getPage(page).subscribe((data: any) => {
@@ -42,15 +47,10 @@ export class TicketListComponent implements OnInit {
       if (data.next_page) this.next = true;
       if (data.previous_page) this.prev = true;
       if (direction === 'next') {
-        this.count += this.tickets.length;
+        this.count += data.tickets.length;
       } else {
-        this.count -= this.tickets.length;
+        this.count -= data.tickets.length;
       }
     });
-  }
-
-  clickTicket(id: number) {
-    console.log(id);
-    this.router.navigate([`tickets/${id}`], { relativeTo: this.route });
   }
 }

@@ -23,6 +23,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// Serve only the static files form the dist directory
+app.use(express.static(__dirname + '/dist/zendesk-challenge'));
+
+app.get('/*', function (req, res) {
+
+    res.sendFile(path.join(__dirname + '/dist/zendesk-challenge/index.html'));
+});
+
 app.use(router);
 
 const server = http.createServer(app);
