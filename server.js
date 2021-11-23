@@ -1,7 +1,8 @@
 import express from 'express';
 import http from 'http';
 import config from 'config';
-import router from './routes/routes.js'
+import router from './routes/routes.js';
+import path from 'path';
 
 const app = express();
 
@@ -21,14 +22,6 @@ app.use((req, res, next) => {
         'GET, POST, PATCH, PUT, DELETE, OPTIONS'
     );
     next();
-});
-
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/zendesk-challenge'));
-
-app.get('/*', function (req, res) {
-
-    res.sendFile(path.join(__dirname + '/dist/zendesk-challenge/index.html'));
 });
 
 app.use(router);
