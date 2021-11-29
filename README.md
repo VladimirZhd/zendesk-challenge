@@ -1,6 +1,6 @@
 # ZendeskChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.4.
+This project is for Zendesk coding challenge
 
 ## Development server
 
@@ -13,10 +13,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Adding config file to the project
 
 - Create a `config` folder in the root folder
-- Create a `default.json` file inside the config folder
-- Add two items to the json file
-  - `token` - use a valid API token to test the app
-  - `PORT` - Port you want the server to be available through
+- Copy `default.json` attached to the email to the folder
 
 ## Running a proxy server
 
