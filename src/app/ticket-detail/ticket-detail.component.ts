@@ -19,6 +19,7 @@ export class TicketDetailComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        // Get a ticket data on page initialization 
         const resolvedTicket = this.route.snapshot.data['ticket'];
         if (typeof resolvedTicket === 'string') {
             this.errorText = resolvedTicket;
@@ -31,7 +32,7 @@ export class TicketDetailComponent implements OnInit {
                 });
         }
     }
-
+    // go back to the ticket list
     clickBack() {
         this.router.navigate(['/tickets'], { relativeTo: this.route });
     }
